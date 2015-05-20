@@ -2,7 +2,6 @@ PROJECT = calrissian
 LIB = $(PROJECT)
 DEPS = ./deps
 BIN_DIR = ./bin
-EXPM = $(BIN_DIR)/expm
 
 SOURCE_DIR = ./src
 OUT_DIR = ./ebin
@@ -35,10 +34,6 @@ $(LFETOOL): $(BIN_DIR)
 
 get-version:
 	@PATH=$(SCRIPT_PATH) lfetool info version
-
-$(EXPM): $(BIN_DIR)
-	@[ -f $(EXPM) ] || \
-	PATH=$(SCRIPT_PATH) lfetool install expm $(BIN_DIR)
 
 get-deps:
 	@echo "Getting dependencies ..."
@@ -108,14 +103,3 @@ push-all:
 install: compile
 	@echo "Installing calrissian ..."
 	@PATH=$(SCRIPT_PATH) lfetool install lfe
-
-upload: $(EXPM) get-version
-	@echo "Preparing to upload calrissian ..."
-	@echo
-	@echo "Package file:"
-	@echo
-	@cat package.exs
-	@echo
-	@echo "Continue with upload? "
-	@read
-	$(EXPM) publish
