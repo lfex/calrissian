@@ -18,15 +18,8 @@ Calrissian is an implementation of monads in LFE, inspired by
 Dependencies
 ------------
 
-This project assumes that you have `rebar`_ installed somwhere in your
+This project assumes that you have `rebar3`_ installed somewhere in your
 ``$PATH``.
-
-This project depends upon the following, which are installed to the ``deps``
-directory of this project when you run ``make deps``:
-
-* `LFE`_ (Lisp Flavored Erlang; needed only to compile)
-* `lfeunit`_ (needed only to run the unit tests)
-
 
 Installation
 ============
@@ -37,7 +30,7 @@ Just add it to your ``rebar.config`` deps:
 
     {deps, [
         ...
-        {calrissian, ".*", {git, "git@github.com:correl/calrissian.git", "master"}}
+        {calrissian, {git, "git@github.com:lfex/calrissian.git", {branch, "master"}}}
       ]}.
 
 
@@ -45,9 +38,16 @@ And then do the usual:
 
 .. code:: bash
 
-    $ rebar get-deps
-    $ rebar compile
+    $ rebar3 compile
 
+Tests
+=====
+
+You can run the test suite with rebar:
+
+.. code:: bash
+
+    $ rebar3 eunit
 
 Examples
 ========
@@ -97,6 +97,4 @@ Without the error monad, the code might have looked like this:
 .. Links
 .. -----
 .. _erlando: https://github.com/rabbitmq/erlando
-.. _rebar: https://github.com/rebar/rebar
-.. _LFE: https://github.com/rvirding/lfe
-.. _lfeunit: https://github.com/lfe/lfeunit
+.. _rebar: https://github.com/erlang/rebar3
