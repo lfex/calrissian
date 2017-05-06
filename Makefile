@@ -13,7 +13,7 @@ push-tags:
 push-all: push push-tags
 
 build: clean
-	rebar3 compile
+	rebar3 do compile, eunit
 
 build-all: build
 
