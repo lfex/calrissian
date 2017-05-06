@@ -1,10 +1,14 @@
 language: erlang
-script: "make check-travis"
-notifications:
-  #irc: "irc.freenode.org#YOUR-PROJECT-CHANNEL"
-  recipients:
-    - correl@gmail.com
+install: true
+before_script:
+  - wget https://s3.amazonaws.com/rebar3/rebar3
+  - chmod +x rebar3
+env: PATH=".:$PATH"
+script: make build-all
 otp_release:
-  - 17.0
-  - R16B03
+  - 19.1
+  - 18.3
+  - 18.0
+  - 17.5
+  - R16B03-1
   - R15B03
